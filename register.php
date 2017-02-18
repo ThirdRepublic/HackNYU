@@ -6,11 +6,11 @@
     $email = $_POST["email"];
     $IsStudent = $_POST["IsStudent"];                
     $password = $_POST["password"];
-    // if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        // $_SESSION["text"] = "Not a vaild email";
-		// header("Location: index.php");
-    // }
-    // else
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $_SESSION["text"] = "Not a vaild email";
+		header("Location: index.php");
+    }
+    else
         if(!preg_match("/^[a-zA-Z]*$/",$FName) || !preg_match("/^[a-zA-Z]*$/",$LName)){
             $_SESSION["text"] = "Name can only contain letters";
             header("Location: index.php"); 

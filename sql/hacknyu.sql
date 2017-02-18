@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2017 at 06:32 PM
+-- Generation Time: Feb 18, 2017 at 07:47 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -56,6 +56,13 @@ CREATE TABLE `users` (
   `IsStudent` tinyint(1) NOT NULL DEFAULT '1',
   `Password` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`Email`, `FName`, `LName`, `IsStudent`, `Password`) VALUES
+('t@gmail.com', 't', 't', 1, '$2y$10$C.ITogGkfHWPRu.tKwiJDOUNVBgydZ0mKX6gPO4wIAClO4ucRzmjq');
 
 --
 -- Indexes for dumped tables
