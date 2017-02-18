@@ -55,6 +55,9 @@
             form{
                 color:black;
             }
+            input{
+                margin:5px;
+            }
             .title:hover{
                 text-decoration:underline;
                 text-decoration-color:#ff4949;
@@ -100,7 +103,7 @@
     				<input name = 'FName' placeholder = 'First Name' type = 'text' /> <br>
                     <input name = 'LName' placeholder = 'Last Name' type = 'text' /> <br>
     				<input name = 'email' placeholder = 'Email' type = 'text' /> <br>
-    				<input name = 'password' type= 'password' placeholder = 'Password'/> <br><br>
+    				<input name = 'password' type= 'password' placeholder = 'Password'/> <br>
                     <input name = 'IsStudent' value = 1 checked = 'checked' type = 'radio'> Student
                     <input name = 'IsStudent' value = 0 type = 'radio'> Professor <br><br>
                     <input type='submit'>
