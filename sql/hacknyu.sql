@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2017 at 09:38 PM
+-- Generation Time: Feb 18, 2017 at 10:38 PM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.1
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -36,6 +36,17 @@ CREATE TABLE `appointment` (
   `oh_ID` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`app_ID`, `timestamp`, `duration`, `queue`, `categories`, `question`, `oh_ID`) VALUES
+(101, '2017-02-18 21:12:50', '2016-07-12 07:15:00', 1, 'Math', '6', 501),
+(102, '2017-02-18 21:13:59', '2016-11-02 14:30:00', 5, 'English', '34', 502),
+(103, '2017-02-18 21:15:38', '2016-11-02 17:45:00', 20, 'Functional Programming', '100', 502),
+(104, '2016-10-04 13:20:00', '0000-00-00 00:00:00', 3, 'Computer Architecture', '7', 503),
+(105, '2016-12-01 18:00:00', '0000-00-00 00:00:00', 2, 'Algorithms', '4', 501);
+
 -- --------------------------------------------------------
 
 --
@@ -54,7 +65,10 @@ CREATE TABLE `bookmarked` (
 
 INSERT INTO `bookmarked` (`email`, `class_ID`, `isEnrolled`) VALUES
 ('test@gmail.com', 12345, 1),
-('tea@gmail.com', 54321, 0);
+('tea@gmail.com', 54321, 0),
+('bob@bob.bob', 201, 1),
+('bill@bill.bill', 203, 0),
+('ken@ken.ken', 205, 1);
 
 -- --------------------------------------------------------
 
@@ -66,6 +80,17 @@ CREATE TABLE `classes` (
   `class_ID` int(255) NOT NULL,
   `description` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`class_ID`, `description`) VALUES
+(201, 'Suffering -Computer Edition'),
+(202, 'Suffering - Science Edition'),
+(203, 'Suffering - English Edition'),
+(205, 'Suffering - Discrete Math Edition'),
+(12345, 'Suffering - Ultimate Edition');
 
 -- --------------------------------------------------------
 
@@ -82,6 +107,16 @@ CREATE TABLE `office_hour` (
   `duration` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `office_hour`
+--
+
+INSERT INTO `office_hour` (`oh_ID`, `class_ID`, `staff_ID`, `time_Begin`, `location`, `duration`) VALUES
+(501, 201, 401, '08:00:00', 'Room 10', '02:00:00'),
+(502, 205, 404, '17:00:00', 'Room 4', '02:00:00'),
+(503, 203, 402, '12:00:00', 'Room 15', '02:30:00'),
+(505, 205, 402, '10:00:00', 'Room 11', '02:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -94,6 +129,17 @@ CREATE TABLE `school` (
   `city` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `school`
+--
+
+INSERT INTO `school` (`school_ID`, `school_Name`, `city`) VALUES
+(601, 'NYU', 'Brooklyn'),
+(602, 'Cornell', 'Ithaca'),
+(603, 'Harvard', 'Boston'),
+(604, 'Columbia', 'New York'),
+(605, 'Princeton', 'Princeton');
+
 -- --------------------------------------------------------
 
 --
@@ -105,15 +151,20 @@ CREATE TABLE `users` (
   `FName` varchar(200) DEFAULT NULL,
   `LName` varchar(200) DEFAULT NULL,
   `IsStudent` tinyint(1) NOT NULL DEFAULT '1',
-  `Password` varchar(200) DEFAULT NULL
+  `Password` varchar(200) DEFAULT NULL,
+  `isTA` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`Email`, `FName`, `LName`, `IsStudent`, `Password`) VALUES
-('t@gmail.com', 't', 't', 1, '$2y$10$C.ITogGkfHWPRu.tKwiJDOUNVBgydZ0mKX6gPO4wIAClO4ucRzmjq');
+INSERT INTO `users` (`Email`, `FName`, `LName`, `IsStudent`, `Password`, `isTA`) VALUES
+('t@gmail.com', 't', 't', 1, '$2y$10$C.ITogGkfHWPRu.tKwiJDOUNVBgydZ0mKX6gPO4wIAClO4ucRzmjq', 0),
+('bob@bob.bob', 'Bob', 'Bob', 1, 'abcdefghijkl', 0),
+('bill@bill.bill', 'Bill', 'Bill', 0, 'none', 0),
+('ken@ken.ken', 'Ken', 'Ken', 1, 'ken', 1),
+('tea@tea.tea', 'Tea', 'Cup', 1, 'abcde', 0);
 
 --
 -- Indexes for dumped tables
@@ -165,22 +216,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `app_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `app_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 --
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `class_ID` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `class_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12346;
 --
 -- AUTO_INCREMENT for table `office_hour`
 --
 ALTER TABLE `office_hour`
-  MODIFY `oh_ID` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `oh_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=506;
 --
 -- AUTO_INCREMENT for table `school`
 --
 ALTER TABLE `school`
-  MODIFY `school_ID` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `school_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=606;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
