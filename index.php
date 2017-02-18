@@ -2,37 +2,11 @@
 <html>
     <head>
         <title></title>
-		<link href="https://fonts.googleapis.com/css?family=ABeeZee|Open+Sans" rel="stylesheet">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		
-	<link rel = "stylesheet" href = "css/main.css">
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			$("#subprofile").hide();
-			$("#profile").click(function(){
-				$("#subprofile").fadeToggle();
-			});
-		});
-	</script>
-    </head>
-    <body>
+		<?php include "include/headerscript.php" ?>
+	</head>
+	<body>
 	<div id = "navbar">
 		<div id = "logo"><?php include "logo/logo.php"?></div>
-		<div class = "navcontainer">
-			<a href = "officehour.php">Office Hour</a><!--add a drop tab there for prof and ta-->
-			<a href = "myclasses.php">My Classes</a>
-			<a href = "help.php">Help</a>
-			<a id = "profile">Profile</a><br>
-			<div id = "subprofile">
-				<div><img alt = "pfp"></div>
-				<div><a href = "setting.php">Setting</a></div>
-				<div><a href = "logout.php">Logout</a></div>
-			</div>
-		</div>
 	</div>
 	<div id = "mainbody">
     <?php
