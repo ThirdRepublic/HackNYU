@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2017 at 07:47 PM
+-- Generation Time: Feb 18, 2017 at 09:38 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -23,12 +23,63 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `appointment`
+--
+
+CREATE TABLE `appointment` (
+  `app_ID` int(255) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `duration` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `queue` int(255) NOT NULL,
+  `categories` varchar(500) NOT NULL,
+  `question` varchar(500) NOT NULL,
+  `oh_ID` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookmarked`
+--
+
+CREATE TABLE `bookmarked` (
+  `email` varchar(200) DEFAULT NULL,
+  `class_ID` int(255) DEFAULT NULL,
+  `isEnrolled` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bookmarked`
+--
+
+INSERT INTO `bookmarked` (`email`, `class_ID`, `isEnrolled`) VALUES
+('test@gmail.com', 12345, 1),
+('tea@gmail.com', 54321, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `classes`
 --
 
 CREATE TABLE `classes` (
   `class_ID` int(255) NOT NULL,
   `description` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `office_hour`
+--
+
+CREATE TABLE `office_hour` (
+  `oh_ID` int(255) NOT NULL,
+  `class_ID` int(255) DEFAULT NULL,
+  `staff_ID` int(255) DEFAULT NULL,
+  `time_Begin` time DEFAULT NULL,
+  `location` varchar(200) DEFAULT NULL,
+  `duration` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -69,11 +120,29 @@ INSERT INTO `users` (`Email`, `FName`, `LName`, `IsStudent`, `Password`) VALUES
 --
 
 --
+-- Indexes for table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD UNIQUE KEY `app_ID` (`app_ID`);
+
+--
+-- Indexes for table `bookmarked`
+--
+ALTER TABLE `bookmarked`
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- Indexes for table `classes`
 --
 ALTER TABLE `classes`
   ADD UNIQUE KEY `class_ID` (`class_ID`);
 ALTER TABLE `classes` ADD FULLTEXT KEY `description` (`description`);
+
+--
+-- Indexes for table `office_hour`
+--
+ALTER TABLE `office_hour`
+  ADD UNIQUE KEY `oh_ID` (`oh_ID`);
 
 --
 -- Indexes for table `school`
@@ -93,10 +162,20 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `appointment`
+--
+ALTER TABLE `appointment`
+  MODIFY `app_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
   MODIFY `class_ID` int(255) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `office_hour`
+--
+ALTER TABLE `office_hour`
+  MODIFY `oh_ID` int(255) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `school`
 --
