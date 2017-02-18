@@ -14,8 +14,8 @@
                 background-color:#382e2e;
             }
             svg{
-                margin-left:42%;
-                margin-right:42%;
+                margin-left:40%;
+                margin-right:40%;
             }
             #top{
                 background-color:#382e2e;
@@ -28,11 +28,9 @@
                 z-index:-1;
                 font-size: 12pt;
             }
-            /*#logo{
-                position: fixed;
-                left: -15px;
-                top: -59px;
-            }*/
+            #logo{
+                margin-top:-10px;
+            }
             text, .title{
                 font-family: 'Open Sans', sans-serif;
                 font-size: 12pt;
@@ -70,7 +68,7 @@
 	</head>
 	<body>
 	<div id = "top">
-            <div id = "logo"><?php include "logo/logo.php" ?></div>
+            <div id = "logo" class = "container"><?php include "logo/logo.php" ?></div>
 	</div>
 	<div id = "mainbody">
     <?php
