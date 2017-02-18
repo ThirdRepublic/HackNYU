@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2017 at 07:51 PM
+-- Generation Time: Feb 18, 2017 at 08:18 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -31,6 +31,14 @@ CREATE TABLE `bookmarked` (
   `class_ID` int(255) DEFAULT NULL,
   `isEnrolled` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bookmarked`
+--
+
+INSERT INTO `bookmarked` (`email`, `class_ID`, `isEnrolled`) VALUES
+('test@gmail.com', 12345, 1),
+('tea@gmail.com', 54321, 0);
 
 --
 -- Indexes for dumped tables
