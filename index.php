@@ -59,10 +59,15 @@
             .title:hover{
                 text-decoration:underline;
                 text-decoration-color:#ff4949;
+                cursor: pointer;
             }
             .descrip{
                 color:black;
                 font-size:18px;
+            }
+            #login{
+                border-right-color:#ff4949;
+                border-right-style:solid;
             }
         </style>
 	</head>
