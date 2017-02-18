@@ -16,7 +16,7 @@
         echo "
             <div>Login</div>
             <form action='logIn.php' method='POST'>
-                <input name='email' type='text' placeholder='email'> <br>
+                <input name='email' type='text' placeholder='Email'> <br>
                 <input name='password' type='password' placeholder='Password'> <br>
                 <input type='submit'>
             </form>

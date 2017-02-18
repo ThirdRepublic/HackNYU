@@ -1,6 +1,10 @@
 <?php
     session_start();
-    $conn = new PDO("mysql:host=localhost;dbname=hacknyu", "root", "");   
+    $conn = new PDO("mysql:host=localhost;dbname=hacknyu", "root", "");
+    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+        $_SESSION["text"] = "Not a vaild email";
+		header("Location: index.php");
+    }
 	if($_POST["email"]==null || $_POST["password"]==null){	
 		$_SESSION["text"] = "You cannot leave any field blank.";
 		header("Location: index.php");
