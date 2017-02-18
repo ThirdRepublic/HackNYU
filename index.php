@@ -72,10 +72,7 @@
 		$(document).ready(function(){
 			$("#subprofile").hide();
 			$("#profile").click(function(){
-				$("#subprofile").show();
-			});
-			$("#profile").mouseenter(function(){
-				$("#subprofile").show();
+				$("#subprofile").fadeToggle();
 			});
 		});
 	</script>
