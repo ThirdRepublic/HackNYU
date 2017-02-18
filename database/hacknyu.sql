@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2017 at 10:38 PM
+-- Generation Time: Feb 18, 2017 at 10:46 PM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `appointment` (
   `app_ID` int(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `duration` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `duration` datetime DEFAULT NULL,
   `queue` int(255) NOT NULL,
   `categories` varchar(500) NOT NULL,
   `question` varchar(500) NOT NULL,
@@ -45,7 +45,8 @@ INSERT INTO `appointment` (`app_ID`, `timestamp`, `duration`, `queue`, `categori
 (102, '2017-02-18 21:13:59', '2016-11-02 14:30:00', 5, 'English', '34', 502),
 (103, '2017-02-18 21:15:38', '2016-11-02 17:45:00', 20, 'Functional Programming', '100', 502),
 (104, '2016-10-04 13:20:00', '0000-00-00 00:00:00', 3, 'Computer Architecture', '7', 503),
-(105, '2016-12-01 18:00:00', '0000-00-00 00:00:00', 2, 'Algorithms', '4', 501);
+(105, '2016-12-01 18:00:00', '0000-00-00 00:00:00', 2, 'Algorithms', '4', 501),
+(106, '2017-02-18 21:44:31', NULL, 1, 'review', 'wws', 22);
 
 -- --------------------------------------------------------
 
@@ -216,7 +217,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `app_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `app_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 --
 -- AUTO_INCREMENT for table `classes`
 --
