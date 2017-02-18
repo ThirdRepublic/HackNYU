@@ -9,7 +9,7 @@
 			<div id = "subprofile">
 				<div><img alt = "pfp"></div>
 				<div><a href = "setting.php">Setting</a></div>
-				<div><a href = "logout.php">Logout</a></div>
+				<div><a href = "logOut.php">Logout</a></div>
 			</div>
 		</div>
 	</div>
