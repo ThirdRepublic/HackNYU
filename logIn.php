@@ -15,7 +15,7 @@
     $result = $statement->fetch();
     if ($result && password_verify($_POST["password"], $result["password"])){
         $_SESSION["email"] = $_POST['email'];
-        header("Location: index.php");
+        header("Location: myclasses.php");
     }
     else{
         $_SESSION["text"] = "Not an valid account.";
