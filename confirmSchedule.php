@@ -12,8 +12,6 @@
         $result +=1;
         $statement = $conn->prepare("INSERT INTO appointment VALUES (NULL,DEFAULT,NULL,$result,'$_POST[categories]','$_POST[question]',$_SESSION[oh_ID])");
         $statement->execute();
-        $_SESSION["text"] = $result;
         header("Location: schedule.php");
     }    
 ?>
-$_POST[categories],$_POST[question],$_SESSION[oh_ID]
