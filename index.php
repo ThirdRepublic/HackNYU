@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
-		<?php include "include/headerscript.php" ?>
+        <link href="https://fonts.googleapis.com/css?family=ABeeZee|Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <title>Save-A-Grade</title>
+        <style>
+            body{
+                background-color:#382e2e;
+            }
+            svg{
+                margin-left:42%;
+                margin-right:42%;
+            }
+            #top{
+                background-color:#382e2e;
+                position: fixed;
+                top:0px;
+                left:0px;
+                right:0px;
+                height: 55px;
+                text-align: right;
+                z-index:-1;
+                font-size: 12pt;
+            }
+            /*#logo{
+                position: fixed;
+                left: -15px;
+                top: -59px;
+            }*/
+            text, .title{
+                font-family: 'Open Sans', sans-serif;
+                font-size: 12pt;
+            }
+            .Aplus{
+                font-size: 17pt;
+            }
+            .center{
+                margin-top:150px;
+                margin-left:40%;
+                margin-right:40%;
+                text-align:center;
+                border-style:solid;
+                width:20%;
+                padding:10px;
+                background-color:white;
+                color:#ff4949;
+                font-family: 'Open Sans', sans-serif;
+            }
+            form{
+                color:black;
+            }
+            .title:hover{
+                text-decoration:underline;
+                text-decoration-color:#ff4949;
+            }
+            .descrip{
+                color:black;
+                font-size:18px;
+            }
+        </style>
 	</head>
 	<body>
-	<div id = "navbar">
-		<div id = "logo"><?php include "logo/logo.php"?></div>
+	<div id = "top">
+            <div id = "logo"><?php include "logo/logo.php" ?></div>
 	</div>
 	<div id = "mainbody">
     <?php
@@ -18,23 +79,33 @@
     }
     if (!isset($_SESSION["email"])) {
         echo "
-            <div>Login</div>
-            <form action='logIn.php' method='POST'>
-                <input name='email' type='text' placeholder='Email'> <br>
-                <input name='password' type='password' placeholder='Password'> <br>
-                <input type='submit'>
-            </form>
-            <br><br>
-            <div>Register</div>
-            <form action='register.php' method='POST'>
-				<input name = 'FName' placeholder = 'First Name' type = 'text' /> <br>
-                <input name = 'LName' placeholder = 'Last Name' type = 'text' /> <br>
-				<input name = 'email' placeholder = 'Email' type = 'text' /> <br>
-				<input name = 'password' type= 'password' placeholder = 'Password'/> <br>
-                <input name = 'IsStudent' value = 1 checked = 'checked' type = 'radio'> Student
-                <input name = 'IsStudent' value = 0 type = 'radio'> Professor <br>
-                <input type='submit'>
-            </form>
+            <div class = 'container center'>
+                <div class = 'row'>
+                    <div id = 'login' class = 'title col-md-6'>Login</div>
+                    <div id = 'register' class = 'title col-md-6'>Register</div>
+                </div>
+                <br />
+
+                <span class = 'descrip formlog'>Log in</span>
+                <br class = 'formlog'/><br class = 'formlog'/>
+                <form class = 'formlog' action='logIn.php' method='POST'>
+                    <input name='email' type='text' placeholder='Email'> <br>
+                    <input name='password' type='password' placeholder='Password'> <br><br>
+                    <input type='submit'>
+                </form>
+                
+                <span class = 'descrip formreg'>Register</span>
+                <br class = 'formreg'/><br class = 'formreg'/>
+                <form class = 'formreg' action='register.php' method='POST'>
+    				<input name = 'FName' placeholder = 'First Name' type = 'text' /> <br>
+                    <input name = 'LName' placeholder = 'Last Name' type = 'text' /> <br>
+    				<input name = 'email' placeholder = 'Email' type = 'text' /> <br>
+    				<input name = 'password' type= 'password' placeholder = 'Password'/> <br><br>
+                    <input name = 'IsStudent' value = 1 checked = 'checked' type = 'radio'> Student
+                    <input name = 'IsStudent' value = 0 type = 'radio'> Professor <br><br>
+                    <input type='submit'>
+                </form>
+            </div>
         ";
     } 
     else {
@@ -50,5 +121,22 @@
     }
     ?>
 	</div>
+    <script>
+        // getting the divs for login and register to see which is active
+        $(document).ready(function() {
+            $(".formreg").hide();   // by default, want to log in
+
+            // when logging in, hide register form
+            $("#login").click(function() {
+                $(".formlog").show();
+                $(".formreg").hide();
+            });
+            // when registering, hide login form
+            $("#register").click(function() {
+                $(".formlog").hide();
+                $(".formreg").show();
+            })
+        });
+    </script>
     </body>
 </html>
