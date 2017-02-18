@@ -3,71 +3,13 @@
     <head>
         <title></title>
 		<link href="https://fonts.googleapis.com/css?family=ABeeZee|Open+Sans" rel="stylesheet">
-	<style>
-		#logo{
-			position: fixed;
-			left: -15px;
-			top: -59px;
-		}
-		text{
-			font-family: 'ABeeZee', sans-serif;
-		}
-		.Aplus{
-			font-size: 17pt;
-		}
-		#navbar{
-			background-color:#382e2e;
-			position: fixed;
-			top:0px;
-			left:0px;
-			right:0px;
-			height: 55px;
-			text-align: right;
-		}
-		#navbar a {
-			color: #ff4949;
-			font-family: 'ABeeZee', sans-serif;
-			text-align: center;
-			margin-right: 15px;
-			text-decoration: none;
-			-webkit-transition: .35s ease-in-out;
-			transition: .35s ease-in-out;
-			padding-left: 5px;
-			padding-right: 5px;
-		}
-		.navcontainer {
-			margin-top: 22px;
-		}
-		#mainbody{
-			margin-top:55px;
-		}
-		#navbar a:hover {
-			color: white;
-		}
-		#subprofile{
-			/*display: none;*/
-			display: block;
-			text-align: center;
-			position: fixed;
-			background-color: #382e2e;
-			right: 0px;
-			width: 80px;
-			top:50px;
-		}
-		#subprofile a{
-			margin-right:6px;
-			margin-left:4px;
-		}
-		#subprofile div{
-			padding-top:5px;
-			padding-bottom: 5px;
-		}
-		#subprofile {
-			display:none;
-		}
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		
-	</style>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel = "stylesheet" href = "css/main.css">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready(function(){
 			$("#subprofile").hide();
