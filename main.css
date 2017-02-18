@@ -1,6 +1,38 @@
-h1 {
-	color:blue;
+body {
+	color:black;
+}
+a{
+	padding:30px;
+	margin-right:15px;
+	border-style:solid;
+	border-color:black;
+	background-color:black;
+	font-family: 'Open Sans', sans-serif;
+	color:white;
+}
+.top{
+	text-align:right;
+	height:50px;
+	background-color:#ff4949;
+}
+.well{
+	margin-left:15px;
 }
 .main {
 	text-align:center;
+}
+.title {
+	font-family: 'ABeeZee', sans-serif;
+}
+.body{
+	font-family: 'Open Sans', sans-serif;
+}
+.col-md-2{
+	border-style:solid;
+	height:50px;
+	border-color:black;
+}
+.col-md-1, .well{
+	background-color:#ff4949;
+	color:white;
 }
