@@ -1,5 +1,6 @@
 <?php
-include "headerscript.php";
+session_start();
+    $conn = new PDO("mysql:host=localhost;dbname=hacknyu", "root", "");
 /*
 if (is_ajax()) {
   if (isset($_POST["select"]) && !empty($_POST["select"])) { //Checks if action value exists
@@ -21,7 +22,7 @@ function test_function(){*/
 	$statement->execute();
 	$return = array();
 	while($result = $statement->fetch()){
-		$return[] = array('OHID'=>$result['oh_ID'], "time"=>$result['time_Begin'], "location"=>$result['location']);
+		$return["json"] = json_encode(array('OHID'=>$result['oh_ID'], "time"=>$result['time_Begin'], "location"=>$result['location']));
     //echo $result['oh_ID'].$result['time_Begin'].$result['location'];
 	}
   //Do what you need to do with the info. The following are some examples.
@@ -30,7 +31,7 @@ function test_function(){*/
   //}
   //$return["favorite_restaurant"] = "McDonald's";
 
-  $return["json"] = json_encode($return);
+  //$return["json"] = json_encode($return);
   echo json_encode($return);
 //}
 ?>

@@ -32,7 +32,7 @@
 					  url: "include/getOH.php", //Relative or absolute path to response.php file
 					  data: data,
 					  success: function(data) {
-						$.each(results, function(k, v){
+						$.each(data, function(k, v){
 							returndata.push([v.OHID, v.time,v.location]);
 							console.log("Hello world I want to die");
 						});
