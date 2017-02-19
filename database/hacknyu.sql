@@ -42,11 +42,11 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`app_ID`, `timestamp`, `duration`, `queue`, `categories`, `question`, `oh_ID`, `email`) VALUES
-(101, '2017-02-19 04:30:03', '2016-07-12 07:15:00', 1, 'Math', '6', 501, 't@gmail.com'),
+(101, '2017-02-19 04:30:03', '2016-07-12 07:15:00', 1, 'Math', '6', 501, 'bob@bob.bob'),
 (102, '2017-02-19 04:30:17', '2016-11-02 14:30:00', 5, 'English', '34', 502, 'bob@bob.bob'),
 (103, '2017-02-19 04:32:16', '2016-11-02 17:45:00', 20, 'Functional Programming', '100', 502, 'bill@bill.bill'),
 (104, '2017-02-19 04:32:29', '0000-00-00 00:00:00', 3, 'Computer Architecture', '7', 503, 'ken@ken.ken'),
-(105, '2017-02-19 04:32:53', '0000-00-00 00:00:00', 2, 'Algorithms', '4', 501, 'juice@juice.com');
+(105, '2017-02-19 04:32:53', '0000-00-00 00:00:00', 2, 'Algorithms', '4', 501, 'bob@bob.bob');
 
 -- --------------------------------------------------------
 
