@@ -27,7 +27,7 @@
         $isStudent = $result['IsStudent'];
         $link = "";
         if(!$isStudent AND !$isTA)
-            $link = "professorAddTA.php";
+            $link = "professorAddClass.php";
         else
             if($isTA)
                 $link = "TASelectOfficeHour.php";
@@ -38,7 +38,7 @@
 		<a href = "myclasses.php" ><div id = "logo"><?php include "logo/logo.php" ?></div> </a>
 		<div class = "navcontainer">
 			<a class = "navbar-a" href = "officehour.php">Office Hour</a>	<!--	add a drop tab there for prof and ta -->
-			<a class = "navbar-a" href = "myclasses.php">My Classes</a>
+			<a class = "navbar-a" href = "<?php echo $link ?>">Add Office Hours</a>
 			<a class = "navbar-a" href = "help.php">Help</a>
 			<a class = "navbar-a" id = "profile">Profile</a><br>
 			<div id = "subprofile">

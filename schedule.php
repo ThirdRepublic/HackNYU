@@ -27,6 +27,7 @@
                 if(!isset($_SESSION["oh_ID"])){
                     $_SESSION["oh_ID"] = $_GET["oh_ID"];
                 }
+                $_SESSION["oh_Date"] = $_GET["oh_Date"];
                 if(isset($_SESSION["text"])){	
                     echo "<div>".$_SESSION['text']."</div>";
                     $_SESSION["text"] = "";
