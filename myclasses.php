@@ -113,11 +113,12 @@
 			<form id = "classSelect">
 				<select id = "actualSelect">
 				<?php
+					echo $_SESSION['email'];
 					if (isset($_SESSION['email'])){
-					$cmd = "SELECT b.class_ID AS classID, b.isEnrolled as isEnrolled, c.name AS className FROM users u INNER JOIN bookmarked b ON u.email = b.email INNER JOIN classes c ON b.class_ID = c.class_ID WHERE email= '$_SESSION[email]'";
+					$cmd = "SELECT b.class_ID AS classID, b.isEnrolled as isEnrolled, c.name AS className FROM users u INNER JOIN bookmarked b ON u.email = b.email INNER JOIN classes c ON b.class_ID = c.class_ID WHERE u.email= '".$_SESSION['email']."'";
 					$statement = $conn->prepare($cmd);
 					$statement->execute();
-					while($result = $statement->fetch_assoc()){
+					while($result = $statement->fetch()){
 						echo "<option id = ".$result['classID']." class = ".$result['isEnrolled'].">";
 						echo $result["className"];
 						echo "</option>";

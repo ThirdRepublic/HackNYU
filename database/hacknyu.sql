@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2017 at 01:05 AM
+-- Generation Time: Feb 19, 2017 at 01:42 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -54,21 +54,24 @@ INSERT INTO `appointment` (`app_ID`, `timestamp`, `duration`, `queue`, `categori
 --
 
 CREATE TABLE `bookmarked` (
-  `email` varchar(200) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
   `class_ID` int(255) DEFAULT NULL,
-  `isEnrolled` tinyint(1) DEFAULT NULL
+  `isEnrolled` tinyint(1) DEFAULT NULL,
+  `id` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bookmarked`
 --
 
-INSERT INTO `bookmarked` (`email`, `class_ID`, `isEnrolled`) VALUES
-('test@gmail.com', 12345, 1),
-('tea@gmail.com', 54321, 0),
-('bob@bob.bob', 201, 1),
-('bill@bill.bill', 203, 0),
-('ken@ken.ken', 205, 1);
+INSERT INTO `bookmarked` (`email`, `class_ID`, `isEnrolled`, `id`) VALUES
+('bob@bob.bob', 201, 1, 1),
+('bill@bill.bill', 203, 0, 2),
+('juice@juice.com', 201, 1, 3),
+('ken@ken.ken', 205, 1, 4),
+('tea@gmail.com', 54321, 0, 5),
+('test@gmail.com', 12345, 1, 6),
+('juice@juice.com', 203, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -80,19 +83,20 @@ CREATE TABLE `classes` (
   `class_ID` int(255) NOT NULL,
   `description` varchar(500) DEFAULT NULL,
   `Start` date NOT NULL,
-  `End` date NOT NULL
+  `End` date NOT NULL,
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `classes`
 --
 
-INSERT INTO `classes` (`class_ID`, `description`, `Start`, `End`) VALUES
-(201, 'Suffering -Computer Edition', '0000-00-00', '0000-00-00'),
-(202, 'Suffering - Science Edition', '0000-00-00', '0000-00-00'),
-(203, 'Suffering - English Edition', '0000-00-00', '0000-00-00'),
-(205, 'Suffering - Discrete Math Edition', '0000-00-00', '0000-00-00'),
-(12345, 'Suffering - Ultimate Edition', '0000-00-00', '0000-00-00');
+INSERT INTO `classes` (`class_ID`, `description`, `Start`, `End`, `name`) VALUES
+(201, 'Suffering -Computer Edition', '0000-00-00', '0000-00-00', 'Functional Programming'),
+(202, 'Suffering - Science Edition', '0000-00-00', '0000-00-00', 'Waves and Optics'),
+(203, 'Suffering - English Edition', '0000-00-00', '0000-00-00', 'Everything honestly'),
+(205, 'Suffering - Discrete Math Edition', '0000-00-00', '0000-00-00', 'Discrete Math'),
+(12345, 'Suffering - Ultimate Edition', '0000-00-00', '0000-00-00', 'Life');
 
 -- --------------------------------------------------------
 
@@ -160,7 +164,7 @@ ALTER TABLE `appointment`
 -- Indexes for table `bookmarked`
 --
 ALTER TABLE `bookmarked`
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Indexes for table `classes`
