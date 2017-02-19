@@ -120,15 +120,7 @@
                 ".$error."</div>";
     } 
     else {
-        $cmd = "SELECT FName, LName FROM users WHERE email= '$_SESSION[email]'";
-        $statement = $conn->prepare($cmd);
-        $statement->execute();
-        $result = $statement->fetch();
-        echo "<span>Welcome, $result[FName] $result[LName] </span> <br>
-            <form action = 'logOut.php' method='POST'>
-            <input type='submit' value='Log Out'>
-        </form>
-        ";
+        header("Location: myclasses.php");
     }
     ?>
     </div>
