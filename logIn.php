@@ -2,7 +2,7 @@
     session_start();
     $conn = new PDO("mysql:host=localhost;dbname=hacknyu", "root", "");
     if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
-        $_SESSION["text"] = "Not a vaild email";
+        $_SESSION["text"] = "Not a vaild email.";
 		header("Location: index.php");
     }
 	if($_POST["email"]==null || $_POST["password"]==null){	
@@ -18,7 +18,7 @@
         header("Location: myclasses.php");
     }
     else{
-        $_SESSION["text"] = "Not an valid account.";
+        $_SESSION["text"] = "Not a valid account.";
         header("Location: index.php");
     }
     

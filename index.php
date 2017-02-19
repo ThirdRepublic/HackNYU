@@ -77,71 +77,71 @@
         </style>
     </head>
     <body>
-    <div id = "top">
-            <div id = "logo" class = "container"><?php include "logo/logo.php" ?></div>
-    </div>
-    <div id = "mainbody">
-    <?php
-    session_start();
-    $conn = new PDO("mysql:host=localhost;dbname=hacknyu", "root", "");
-    $error = "";
-    if(isset($_SESSION["text"])){   
-        $error = "<div class = 'error'>".$_SESSION['text']."</div>";
-        $_SESSION["text"] = "";
-    }
-    if (!isset($_SESSION["email"])) {
-        echo "
-            <div class = 'container center'>
-                <div class = 'row'>
-                    <div id = 'login' class = 'title col-md-6'>Login</div>
-                    <div id = 'register' class = 'title col-md-6'>Register</div>
-                </div>
-                <br />
+        <div id = "top">
+                <div id = "logo" class = "container"><?php include "logo/logo.php" ?></div>
+        </div>
+        <div id = "mainbody">
+            <?php
+            session_start();
+            $conn = new PDO("mysql:host=localhost;dbname=hacknyu", "root", "");
+            $error = "";
+            if(isset($_SESSION["text"])){   
+                $error = "<div class = 'error'>".$_SESSION['text']."</div>";
+                $_SESSION["text"] = "";
+            }
+            if (!isset($_SESSION["email"])) {
+                echo "
+                    <div class = 'container center'>
+                        <div class = 'row'>
+                            <div id = 'login' class = 'title col-md-6'>Login</div>
+                            <div id = 'register' class = 'title col-md-6'>Register</div>
+                        </div>
+                        <br />
 
-                <span class = 'descrip formlog'>Log in</span>
-                <br class = 'formlog'/><br class = 'formlog'/>
-                <form class = 'formlog' action='logIn.php' method='POST'>
-                    <input name='email' type='text' placeholder='Email'> <br>
-                    <input name='password' type='password' placeholder='Password'> <br><br>
-                    <input type='submit'>
-                </form>
-                
-                <span class = 'descrip formreg'>Register</span>
-                <br class = 'formreg'/><br class = 'formreg'/>
-                <form class = 'formreg' action='register.php' method='POST'>
-                    <input name = 'FName' placeholder = 'First Name' type = 'text' /> <br>
-                    <input name = 'LName' placeholder = 'Last Name' type = 'text' /> <br>
-                    <input name = 'email' placeholder = 'Email' type = 'text' /> <br>
-                    <input name = 'password' type= 'password' placeholder = 'Password'/> <br>
-                    <input name = 'IsStudent' value = 1 checked = 'checked' type = 'radio'> Student
-                    <input name = 'IsStudent' value = 0 type = 'radio'> Professor <br><br>
-                    <input type='submit'>
-                </form>
-                ".$error."</div>";
-    } 
-    else {
-        header("Location: myclasses.php");
-    }
-    ?>
-    </div>
-    <script>
-        // getting the divs for login and register to see which is active
-        $(document).ready(function() {
-            $(".formreg").hide();   // by default, want to log in
+                        <span class = 'descrip formlog'>Log in</span>
+                        <br class = 'formlog'/><br class = 'formlog'/>
+                        <form class = 'formlog' action='logIn.php' method='POST'>
+                            <input name='email' type='text' placeholder='Email'> <br>
+                            <input name='password' type='password' placeholder='Password'> <br><br>
+                            <input type='submit'>
+                        </form>
+                        
+                        <span class = 'descrip formreg'>Register</span>
+                        <br class = 'formreg'/><br class = 'formreg'/>
+                        <form class = 'formreg' action='register.php' method='POST'>
+                            <input name = 'FName' placeholder = 'First Name' type = 'text' /> <br>
+                            <input name = 'LName' placeholder = 'Last Name' type = 'text' /> <br>
+                            <input name = 'email' placeholder = 'Email' type = 'text' /> <br>
+                            <input name = 'password' type= 'password' placeholder = 'Password'/> <br>
+                            <input name = 'IsStudent' value = 1 checked = 'checked' type = 'radio'> Student
+                            <input name = 'IsStudent' value = 0 type = 'radio'> Professor <br><br>
+                            <input type='submit'>
+                        </form>
+                        ".$error."</div>";
+            } 
+            else {
+                header("Location: myclasses.php");
+            }
+            ?>
+        </div>
+        <script>
+            // getting the divs for login and register to see which is active
+            $(document).ready(function() {
+                $(".formreg").hide();   // by default, want to log in
 
-            // when logging in, hide register form
-            $("#login").click(function() {
-                $(".formlog").show();
-                $(".formreg").hide();
-                $(".error").hide();
+                // when logging in, hide register form
+                $("#login").click(function() {
+                    $(".formlog").show();
+                    $(".formreg").hide();
+                    $(".error").hide();
+                });
+                // when registering, hide login form
+                $("#register").click(function() {
+                    $(".formlog").hide();
+                    $(".formreg").show();
+                    $(".error").hide();
+                })
             });
-            // when registering, hide login form
-            $("#register").click(function() {
-                $(".formlog").hide();
-                $(".formreg").show();
-                $(".error").hide();
-            })
-        });
-    </script>
+        </script>
     </body>
 </html>
