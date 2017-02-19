@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2017 at 05:49 PM
+-- Generation Time: Feb 19, 2017 at 06:48 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -67,11 +67,11 @@ CREATE TABLE `bookmarked` (
 --
 
 INSERT INTO `bookmarked` (`class_ID`, `isEnrolled`, `id`, `email`) VALUES
-(1003, 1, 1, ''),
-(4513, 0, 2, ''),
-(2033, 1, 3, ''),
-(2413, 1, 4, ''),
-(2224, 1, 5, '');
+(1003, 1, 1, 'np1514@nyu.edu'),
+(4513, 0, 2, 'np1514@nyu.edu'),
+(2033, 1, 3, 'juice@juice.com'),
+(2413, 1, 4, 'juice@juice.com'),
+(2224, 1, 5, 'juice@juice.com');
 
 -- --------------------------------------------------------
 
@@ -123,17 +123,6 @@ INSERT INTO `office_hour` (`oh_ID`, `class_ID`, `staff_ID`, `time_Begin`, `locat
 (502, 2413, '404', '17:00:00', 'Room 4', '02:00:00', 3),
 (503, 2033, '402', '12:00:00', 'Room 15', '02:30:00', 5),
 (505, 1003, '402', '10:00:00', 'Room 11', '02:00:00', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `staff`
---
-
-CREATE TABLE `staff` (
-  `email` varchar(255) NOT NULL,
-  `class_ID` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
