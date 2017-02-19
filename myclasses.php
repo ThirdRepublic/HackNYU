@@ -20,10 +20,12 @@
 		$(document).ready(function() {
 			var returndata = [];
 			// page is now ready, initialize the calendar...
-			$("#classSelect").submit(function(){
-				if ($('#departmentselect').val()!=""){
+			$("#actualSelect").change(function(){
+							console.log("Hello world I want to die1");
+				if ($('#actualSelect').val()!=""){
+							console.log($('#actualSelect').children(":selected").attr("id"));
 
-					var data = {select: $('#departmentselect').val()};
+					var data = {select: $('#actualSelect').children(":selected").attr("id")};
 					$.ajax({
 					  type: "POST",
 					  dataType: "json",
@@ -32,14 +34,16 @@
 					  success: function(data) {
 						$.each(results, function(k, v){
 							returndata.push([v.OHID, v.time,v.location]);
+							console.log("Hello world I want to die");
 						});
 
-						  
+						
 						
 
 						//alert("Form submitted successfully.\nReturned json: " + data["json"]);
 					  }
 					});
+
 				}
 	
 				
