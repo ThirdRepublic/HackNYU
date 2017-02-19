@@ -29,7 +29,7 @@
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                     $statement = $conn->prepare("SELECT email FROM users WHERE email = '$email'");
                     $statement->execute();
-                    if (($statement->fetch()) == false){
+                    if(($statement->fetch()) == false){
                         $statement = $conn->prepare("INSERT INTO users VALUES ('$email','$FName', '$LName','$IsStudent','$hashedPassword', 'NULL')");
                         $statement->execute();
                         $_SESSION["text"] = "Account Created.";
