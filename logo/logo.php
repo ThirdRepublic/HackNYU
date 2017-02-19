@@ -1,4 +1,4 @@
-<svg id = "logo" width = "400" height = "200" >
+<svg id = "logo" width = "400" height = "110" >
 	<text fill = "white" x = "10" y = "49" transform = "scale(2 2)">save</text>
 	<text class = "Aplus" fill = "red" x = "43.5" y = "50" transform = "scale(2 2)">A</text>
 	<text class = "Aplus" fill = "red" x = "66" y = "54" transform = "scale(1.6 1.6)">+</text>

@@ -7,7 +7,6 @@
 		<script src='api/fullcalendar/lib/jquery.min.js'></script>
 		<script src='api/fullcalendar/lib/moment.min.js'></script>
 		<script src='api/fullcalendar/fullcalendar.js'></script>
-		<script src="https://d3js.org/d3.v4.min.js"></script>
 		<style>
 			#myclasses{
 				border-bottom: 1.5px solid #ff4949;
@@ -15,16 +14,6 @@
 			#calendar{
 				width: 80%;
 				margin-left: 10%;
-			}
-			.title{
-				
-				font-family: 'ABeeZee', sans-serif;
-				color:#ff4949;
-				font-size: 15pt;
-				padding: 5px;
-			}
-			form{
-				padding: 5px;
 			}
 		</style>
 		<?php
@@ -34,7 +23,35 @@
 			elseif(isset($_GET["mode"]==1)
 				include "include/dataAnalysis.php";*/
 		?>
-				<script>
+		<!--script>
+			$(document).ready(function() {
+				$("#dataAnalysisOption").append("<input type = 'radio' name = 'dataAnalysis' value = 'weekday' id = 0>Number of People v. Weekday<br>");
+				$("#dataAnalysisOption").append("<input type = 'radio' name = 'dataAnalysis' value = 'certainOH' id = 1>Number of People v. Certain Office Hour<br>");
+				$("#dataAnalysisOption").append("<input type = 'radio' name = 'dataAnalysis' value = 'OH' id = 2>Number of People v. Office Hour<br>");
+				$("#dataAnalysisOption").append("<input type = 'radio' name = 'dataAnalysis' value = 'avgResponseTime' id = 3>Average Response Time for TAs");
+				$("input[name=dataAnalysis]:radio", "#actualSelect").change(function () {
+					$.ajax({
+					type: "POST",
+					  dataType: "json",
+					  url: "include/getDataAnalysis.php", //Relative or absolute path to response.php file
+					  data: {mode: $('input[name=dataAnalysis]:checked').attr("id"), 
+							 select: $('#actualSelect').children(":selected").attr("id")},
+					  success: function(results) {
+						// console.log(results);
+						var events = [];
+						$.each(results, function(k, v, d){
+							//var dateArr = getDates(v.weekday, v.startDate, v.endDate);
+							//for (var i = 0; i < dateArr.length; i++){
+							//var str = ""+dateArr[i][0]+"-"+dateArr[i][1]+"-"+dateArr[i][2];
+							//}
+						});
+						}
+    
+					});
+				})
+			});
+		</script-->
+		<script>
 		// var returndata = [];
 		$(document).ready(
 		function() {
@@ -46,6 +63,7 @@
 							console.log("Hello world I want to die1");
 				if ($('#actualSelect').val()!=""){
 							console.log($('#actualSelect').children(":selected").attr("id"));
+
 					var data = {select: $('#actualSelect').children(":selected").attr("id")};
 					if (data != "notID"){
 				$.ajax({
@@ -68,6 +86,7 @@
 							})
 							}
 							// returndata.push([v.OHID, v.time,v.location, v.weekday, v.startDate, v.endDate]);
+
 							// var dataArr = getDates(v.weekday, v.startDate, v.endDate);
 							// for (var i = 0; i < dataArr.length; i++){
 							//	var hhmmss = v.time
@@ -87,16 +106,75 @@
     
 					});
 				}
-				else
-					
-			$("#calendar").fullCalendar('destroy');
 				}
 				}
 				});
 			});
 			});
+		
+			/*
 			
-			//var plswork = getDates(1, "2017-11-1", "2018-2-1");
+			// page is now ready, initialize the calendar...
+			$("#actualSelect").change(function(){
+							console.log("Hello world I want to die1");
+				if ($('#actualSelect').val()!=""){
+							console.log($('#actualSelect').children(":selected").attr("id"));
+
+					var data = {select: $('#actualSelect').children(":selected").attr("id")};
+					$.ajax({
+					  type: "POST",
+					  dataType: "json",
+					  url: "include/getOH.php", //Relative or absolute path to response.php file
+					  data: data,
+					  success: function(results) {
+						  console.log(results);
+						$.each(results, function(k, v, d){
+							returndata.push([v.OHID, v.time,v.location]);
+							console.log(""+v.OHID+v.time+v.location)
+						});
+
+						
+						
+
+						//alert("Form submitted successfully.\nReturned json: " + data["json"]);
+					  }
+					});
+
+				}
+	
+				
+				return false;
+			});
+
+			$('#calendar').fullCalendar({
+					var events = [];
+				// put your options and callbacks here
+				    eventSources: [
+
+						// your event source
+						{
+							event.push(
+								for (var i = 0; i < returndata.length; i++)
+								{
+									title: "hello",
+									start: "2017-02-14"
+								}
+							)
+						}
+
+						// any other event sources...
+
+					],
+			
+			eventClick: function(event) {
+				if (event.url) {
+					window.open(event.url);
+					return false;
+				}
+			}
+			*/
+			
+			var plswork = getDates(1, "2017-11-1", "2018-2-1");
 			function getDates(day, startingDate, endingDate){
 				var dates = [];
 				var daysInMonth = [];
@@ -183,9 +261,11 @@
 			function DateBtwn( date1, date2 ) {
 			  //Get 1 day in milliseconds
 			  var one_day=1000*60*60*24;
+
 			  // Convert both dates to milliseconds
 			  var date1_ms = date1.getTime();
 			  var date2_ms = date2.getTime();
+
 			  // Calculate the difference in milliseconds
 			  var difference_ms = date2_ms - date1_ms;
 				
@@ -193,62 +273,19 @@
 			  return Math.round(difference_ms/one_day); 
 			}
 		</script>
-		<!--script>
-			$(document).ready(function() {
-				$("#dataAnalysisOption").append("<option id = 0>Number of People v. Weekday</option>");
-				$("#dataAnalysisOption").append("<option id = 1>Number of People v. Certain Office Hour</option>");
-				$("#dataAnalysisOption").append("<option id = 2>Number of People v. Office Hour</option>");
-				$("#dataAnalysisOption").append("<option id = 3>Average Response Time for TAs</option>");
-				$("#btn").append("Go");
-				$("#btn").click(function () {
-					
-					var svg = d3.select("svg");
-					console.log("hello");
-					console.log($('#dataAnalysisOption').children(":selected").attr("id"));
-					$.ajax({
-					type: "POST",
-					  dataType: "json",
-					  url: "include/getDataAnalysis.php", //Relative or absolute path to response.php file
-					  data: {mode: $('#dataAnalysisOption').children(":selected").attr("id"), 
-							 select: $('#actualSelect').children(":selected").attr("id")},
-					  success: function(results) {
-						  console.log(results);
-						  
-						d3.json(results, function(data){
-							console.log(data);
-							var dateScale = d3.scaleTime().domain([new Date(results.OHDate), new Date(results.OHDate)]).range([0,350]);
-							var dateAxis = d3.axisBottom(dateScale);
-							var freqScale = d3.scaleLinear().domain([0,10]).range([350,0]);
-							var freqAxis = d3.axisLeft(freqScale);
-							var sectorScale = d3.scaleOrdinal(d3.schemeCategory20);
-
-							var plot = svg.append("g").attr("transform", "translate(40,30)");
-							plot.append("g").call(dateAxis).attr("transform", "translate(0,350)");
-							plot.append("g").call(freqAxis).attr("transform", "translate(0,0)");
-
-							var pathGenerator = d3.line()
-							.x(function (d) { return dateScale(d.OHDate); })
-							.y(function (d) { return freqScale(d.Frequency); });
-						})
-						}
-    
-					});
-				})
-			});
-		</script-->
 	</head>
 	<body>
 	<?php include "include/header.php" ?>
 	<div id = "mainbody">
 		<div>
-			<div class = "title">Classes</div>
+			<div>Classes</div>
 			<form id = "classSelect">
 				<select id = "actualSelect">
 					<option id = "nonID" select = "selected">Choose a Class</option>
 				<?php
 					echo $_SESSION['email'];
 					if (isset($_SESSION['email'])){
-					$cmd = "SELECT b.class_ID AS classID, b.isEnrolled as isEnrolled, c.name AS className FROM users u INNER JOIN bookmarked b ON u.email = b.email INNER JOIN classes c ON b.class_ID = c.class_ID WHERE u.email= '".$_SESSION['email']."'";
+					$cmd = "SELECT b.class_ID AS classID, b.isEnrolled as isEnrolled, c.name AS className FROM users u INNER JOIN bookmarked b ON u.email = b.email INNER JOIN classes c ON b.class_ID = c.class_ID WHERE u.email= '".trim($_SESSION['email'])."'";
 					$statement = $conn->prepare($cmd);
 					$statement->execute();
 					while($result = $statement->fetch()){
@@ -266,12 +303,7 @@
 				</select>
 			</form>
 			<div id = "calendar"></div>
-			<!--form id = "modeselect">
-			<select id = "dataAnalysisOption"></select>
-			</form>
-			<div id = "btn"></div>
-			<svg>
-			</svg-->
+			<div id = "dataAnalysisOption"></div>
 			
 		</div>
 	</div>
