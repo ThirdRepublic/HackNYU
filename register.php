@@ -7,12 +7,12 @@
     $IsStudent = $_POST["IsStudent"];                
     $password = $_POST["password"];
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $_SESSION["text"] = "Not a vaild email";
+        $_SESSION["text"] = "Not a vaild email.";
 		header("Location: index.php");
     }
     else
         if(!preg_match("/^[a-zA-Z]*$/",$FName) || !preg_match("/^[a-zA-Z]*$/",$LName)){
-            $_SESSION["text"] = "Name can only contain letters";
+            $_SESSION["text"] = "Name can only contain letters.";
             header("Location: index.php"); 
         }
         else
@@ -32,7 +32,7 @@
                     if(($statement->fetch()) == false){
                         $statement = $conn->prepare("INSERT INTO users VALUES ('$email','$FName', '$LName','$IsStudent','$hashedPassword', 'NULL')");
                         $statement->execute();
-                        $_SESSION["text"] = "Account Created.";
+                        $_SESSION["text"] = "Account created.";
                         header("Location: index.php");
                     }
                     else{

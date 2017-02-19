@@ -2,9 +2,18 @@
 <html>
     <head>
         <title>Office Hour</title>
-		<?php include "include/headerscript.php"?>
+		<?php include "include/headerscript.php" ?>
         <style>
-           
+            #mainbody{
+                font-family: 'Open Sans', sans-serif;
+            }
+           .error{
+                color:red;
+           }
+           .well{
+                margin-left:50px;
+                margin-top:100px;
+           }
         </style>
 	</head>
 	<body>
@@ -33,8 +42,9 @@
                 $statement->execute();
                 $result = $statement->fetchAll();
                 foreach($result as $result => $case){
-                    echo "Email: ".$case[0]." <br>
-                    Catergory: ".$case[2]." <br>
+                    echo "<div class ='container well'>
+                    Email: ".$case[0]." <br>
+                    Category: ".$case[2]." <br>
                     Purpose of visit: ".$case[1]." 
                     <form action='removeOfficeHour.php' method='POST'>
                         <input type='hidden' name='email' value=$case[0]>
@@ -44,6 +54,7 @@
                         <input value = 'Close Appointment' type='submit'>
                     </form>
                     <br> <br>
+                    </div>
                     ";
                 }
                 "<br> <br>";
