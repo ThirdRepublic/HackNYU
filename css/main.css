@@ -19,6 +19,7 @@ text{
 	height: 55px;
 	text-align: right;
 	font-size: 12pt;
+    z-index:-2;
 }
 #navbar a {
 	color: #ff4949;

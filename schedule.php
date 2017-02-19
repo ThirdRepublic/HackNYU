@@ -24,8 +24,6 @@
         <div id = "mainbody" class = "container well">
             <?php 
                 include "include/header.php";
-                session_start();
-                $conn = new PDO("mysql:host=localhost;dbname=hacknyu", "root", "");
                 if(!isset($_SESSION["oh_ID"])){
                     $_SESSION["oh_ID"] = $_GET["oh_ID"];
                 }
