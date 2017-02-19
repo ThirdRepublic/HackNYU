@@ -21,16 +21,16 @@
 -->
 
 	<div id = "navbar" class = "navbar navbar-fixed-top">
-		<a href = "myclasses.php"><div id = "logocontainer" class = "logobox"><?php include "logo/logo.php" ?></div></a>
+		<span href = "myclasses.php"><div id = "logocontainer" class = "logobox"><?php include "logo/logo.php" ?></div></span>
 		<div class = "navcontainer">
-			<a href = "officehour.php">Office Hour</a>	<!--	add a drop tab there for prof and ta -->
-			<a href = "myclasses.php">My Classes</a>
-			<a href = "help.php">Help</a>
-			<a id = "profile">Profile</a><br>
+			<a class = "navbar-a" href = "officehour.php">Office Hour</a>	<!--	add a drop tab there for prof and ta -->
+			<a class = "navbar-a" href = "myclasses.php">My Classes</a>
+			<a class = "navbar-a" href = "help.php">Help</a>
+			<a class = "navbar-a" id = "profile">Profile</a><br>
 			<div id = "subprofile">
 				<div><img alt = "pfp"></div>
-				<div><a href = "setting.php">Setting</a></div>
-				<div><a href = "logOut.php">Logout</a></div>
+				<div><a class = "navbar-a" href = "setting.php">Setting</a></div>
+				<div><a class = "navbar-a" href = "logOut.php">Logout</a></div>
 			</div>
 		</div>
 	</div>
