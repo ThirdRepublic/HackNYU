@@ -16,6 +16,10 @@
             .panel-body{
                 color:#ff4949;
             }
+            .pun{
+                font-weight:bold;
+                text-decoration:none;
+            }
         </style>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -35,7 +39,7 @@
             </div>
             <div class = "panel panel-body">3) How does this work?</div>
             <div class = "panel panel-footer">
-
+                At Save A Grade, we firmly believe that a hands-on approach is the best way to learning something new. <span class='pun'>C</span> if you can Save <span class='pun'>A</span> Grade <span class='pun'>B</span>-fore it's too late. It's <span class='pun'>E</span>-Z, requiring minimal <span class='pun'">F</span>-ort. <span class='pun'>D</span>-cide now!
             </div>
 
             <span class = 'descrip formlog'>Contact Us</span><br>
