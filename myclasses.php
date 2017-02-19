@@ -63,7 +63,7 @@
 							events.push({
 								title: v.location,
 								start: new Date(str + " " + v.time),
-								url: "schedule.php?oh_ID=" + v.OHID,
+								url: "schedule.php?oh_ID=" + v.OHID + "&oh_date=" + str;
 								allDay: false
 							})
 							}
