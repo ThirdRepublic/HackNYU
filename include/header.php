@@ -20,8 +20,6 @@
 	</nav>
 -->
     <?php
-        session_start();
-        $conn = new PDO("mysql:host=localhost;dbname=hacknyu", "root", "");
         $statement = $conn->prepare("SELECT IsStudent, IsTA FROM users WHERE email = '$_SESSION[email]'");
         $statement->execute();
         $result = $statement->fetch();
@@ -37,12 +35,12 @@
                 $link = "StudentSelectClasses.php";
     ?>
 	<div id = "navbar" class = "navbar navbar-fixed-top">
-		<a href = "myclasses.php" <div id = "logo"><?php include "logo/logo.php" ?></div> </a>
+		<a href = "myclasses.php" ><div id = "logo"><?php include "logo/logo.php" ?></div> </a>
 		<div class = "navcontainer">
-			<a href = "officehour.php">Office Hour</a>	<!--	add a drop tab there for prof and ta -->
-			<a href = "myclasses.php">My Classes</a>
-			<a href = "help.php">Help</a>
-			<a id = "profile">Profile</a><br>
+			<a class = "navbar-a" href = "officehour.php">Office Hour</a>	<!--	add a drop tab there for prof and ta -->
+			<a class = "navbar-a" href = "myclasses.php">My Classes</a>
+			<a class = "navbar-a" href = "help.php">Help</a>
+			<a class = "navbar-a" id = "profile">Profile</a><br>
 			<div id = "subprofile">
 				<div><img alt = "pfp"></div>
 				<div><a href = "setting.php">Setting</a></div>

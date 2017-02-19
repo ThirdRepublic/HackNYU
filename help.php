@@ -24,7 +24,7 @@
     </head>
     <body>
         <?php include "include/header.php" ?>
-        <div class="container panel panel-default">
+        <div id = "mainbody" class="container panel panel-default">
             <div class = "panel panel-body">1) What is this?</div>
             <div class = "panel panel-footer">
                 This is a website with the purpose of allowing students and professors to organize office hours for classes.

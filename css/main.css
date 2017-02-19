@@ -19,9 +19,8 @@ text{
 	height: 55px;
 	text-align: right;
 	font-size: 12pt;
-    z-index:-2;
 }
-.navbar-a{
+.navbar-a {
 	color: #ff4949;
 	font-family: 'ABeeZee', sans-serif;
 	text-align: center;
@@ -37,6 +36,7 @@ text{
 }
 #mainbody{
 	margin-top:55px;
+	z-index:-3;
 }
 #navbar a:hover {
 	color: white;
