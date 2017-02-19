@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2017 at 04:42 PM
+-- Generation Time: Feb 19, 2017 at 05:49 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -34,19 +34,20 @@ CREATE TABLE `appointment` (
   `categories` varchar(500) NOT NULL,
   `question` varchar(500) NOT NULL,
   `oh_ID` int(255) NOT NULL,
-  `email` varchar(200) DEFAULT NULL
+  `email` varchar(200) DEFAULT NULL,
+  `oh_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`app_ID`, `timestamp`, `duration`, `queue`, `categories`, `question`, `oh_ID`, `email`) VALUES
-(101, '2017-02-19 15:41:08', 20, 1, 'Math', '6', 501, 'bob@bob.bob'),
-(102, '2017-02-19 15:41:11', 20, 5, 'Physics', '34', 502, 'bob@bob.bob'),
-(103, '2017-02-19 15:41:14', 20, 20, 'Computer Science', '21', 502, 'bill@bill.bill'),
-(104, '2017-02-19 15:41:17', 20, 3, 'Computer Science', '7', 503, 'juice@juice.com'),
-(105, '2017-02-19 15:41:20', 20, 2, 'Math', '4', 501, 'bob@bob.bob');
+INSERT INTO `appointment` (`app_ID`, `timestamp`, `duration`, `queue`, `categories`, `question`, `oh_ID`, `email`, `oh_date`) VALUES
+(101, '2017-02-19 15:41:08', 20, 1, 'Math', '6', 501, 'bob@bob.bob', '0000-00-00'),
+(102, '2017-02-19 15:41:11', 20, 5, 'Physics', '34', 502, 'bob@bob.bob', '0000-00-00'),
+(103, '2017-02-19 15:41:14', 20, 20, 'Computer Science', '21', 502, 'bill@bill.bill', '0000-00-00'),
+(104, '2017-02-19 15:41:17', 20, 3, 'Computer Science', '7', 503, 'juice@juice.com', '0000-00-00'),
+(105, '2017-02-19 15:41:20', 20, 2, 'Math', '4', 501, 'bob@bob.bob', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -55,22 +56,22 @@ INSERT INTO `appointment` (`app_ID`, `timestamp`, `duration`, `queue`, `categori
 --
 
 CREATE TABLE `bookmarked` (
-  `email` varchar(255) NOT NULL,
   `class_ID` int(255) DEFAULT NULL,
   `isEnrolled` tinyint(1) DEFAULT NULL,
-  `id` int(50) NOT NULL
+  `id` int(50) NOT NULL,
+  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bookmarked`
 --
 
-INSERT INTO `bookmarked` (`email`, `class_ID`, `isEnrolled`, `id`) VALUES
-('bob@bob.bob', 1003, 1, 1),
-('bob@bob.bob', 4513, 0, 2),
-('juice@juice.com', 2033, 1, 3),
-('juice@juice.com', 2413, 1, 4),
-('juice@juice.com', 2224, 1, 5);
+INSERT INTO `bookmarked` (`class_ID`, `isEnrolled`, `id`, `email`) VALUES
+(1003, 1, 1, ''),
+(4513, 0, 2, ''),
+(2033, 1, 3, ''),
+(2413, 1, 4, ''),
+(2224, 1, 5, '');
 
 -- --------------------------------------------------------
 
@@ -109,18 +110,30 @@ CREATE TABLE `office_hour` (
   `staff_ID` varchar(200) DEFAULT NULL,
   `time_Begin` time DEFAULT NULL,
   `location` varchar(200) DEFAULT NULL,
-  `duration` time DEFAULT NULL
+  `duration` time DEFAULT NULL,
+  `weekDay` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `office_hour`
 --
 
-INSERT INTO `office_hour` (`oh_ID`, `class_ID`, `staff_ID`, `time_Begin`, `location`, `duration`) VALUES
-(501, 201, 'time@gmail.com', '08:00:00', 'ss', '02:00:00'),
-(502, 205, '404', '17:00:00', 'Room 4', '02:00:00'),
-(503, 203, '402', '12:00:00', 'Room 15', '02:30:00'),
-(505, 205, '402', '10:00:00', 'Room 11', '02:00:00');
+INSERT INTO `office_hour` (`oh_ID`, `class_ID`, `staff_ID`, `time_Begin`, `location`, `duration`, `weekDay`) VALUES
+(501, 2224, 'time@gmail.com', '08:00:00', 'ss', '02:00:00', 0),
+(502, 2413, '404', '17:00:00', 'Room 4', '02:00:00', 3),
+(503, 2033, '402', '12:00:00', 'Room 15', '02:30:00', 5),
+(505, 1003, '402', '10:00:00', 'Room 11', '02:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff`
+--
+
+CREATE TABLE `staff` (
+  `email` varchar(255) NOT NULL,
+  `class_ID` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 

@@ -31,7 +31,7 @@
             </div>
             <div class = "panel panel-body">2) Why do I care?</div>
             <div class = "panel panel-footer">
-                Most students tend to work on assignments as their deadlines approach. As a result, everyone rushes to the same office hour and consequently clog it up. They then proceed to complain about how there are never any open office hours. This is an attempt to fix this issue.
+                Most students tend to work on assignments as their deadlines approach. As a result, everyone rushes to the same office hour and consequently clogs it up. They then proceed to complain about how there are never any open office hours. This is an attempt to fix this issue.
             </div>
             <div class = "panel panel-body">3) How does this work?</div>
             <div class = "panel panel-footer">
