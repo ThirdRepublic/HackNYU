@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2017 at 06:05 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.1
+-- Generation Time: Feb 19, 2017 at 09:50 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -107,18 +107,19 @@ CREATE TABLE `office_hour` (
   `staff_ID` int(255) DEFAULT NULL,
   `time_Begin` time DEFAULT NULL,
   `location` varchar(200) DEFAULT NULL,
-  `duration` time DEFAULT NULL
+  `duration` time DEFAULT NULL,
+  `weekDay` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `office_hour`
 --
 
-INSERT INTO `office_hour` (`oh_ID`, `class_ID`, `staff_ID`, `time_Begin`, `location`, `duration`) VALUES
-(501, 201, 401, '08:00:00', 'Room 10', '02:00:00'),
-(502, 205, 404, '17:00:00', 'Room 4', '02:00:00'),
-(503, 203, 402, '12:00:00', 'Room 15', '02:30:00'),
-(505, 205, 402, '10:00:00', 'Room 11', '02:00:00');
+INSERT INTO `office_hour` (`oh_ID`, `class_ID`, `staff_ID`, `time_Begin`, `location`, `duration`, `weekDay`) VALUES
+(501, 201, 401, '08:00:00', 'Room 10', '02:00:00', 1),
+(502, 205, 404, '17:00:00', 'Room 4', '02:00:00', 3),
+(503, 203, 402, '12:00:00', 'Room 15', '02:30:00', 5),
+(505, 205, 402, '10:00:00', 'Room 11', '02:00:00', 0);
 
 -- --------------------------------------------------------
 

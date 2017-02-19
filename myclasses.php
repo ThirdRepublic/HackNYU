@@ -19,6 +19,7 @@
 		<script>
 		// var returndata = [];
 		$(document).ready(
+		var mode = 0; //0 for calendar 1 for data
 		function() {
 			$("#actualSelect").change(function(){
 				
@@ -30,6 +31,7 @@
 							console.log($('#actualSelect').children(":selected").attr("id"));
 
 					var data = {select: $('#actualSelect').children(":selected").attr("id")};
+					if (data != "notID"){
 				$.ajax({
 					type: "POST",
 					  dataType: "json",
@@ -65,80 +67,21 @@
 								
 							console.log(events);
 						});
-						
 						callback(events);
 						}
     
 					});
 				}
+				else
+					
+			$("#calendar").fullCalendar('destroy');
+				}
 				}
 				});
 			});
 			});
-		
-			/*
 			
-			// page is now ready, initialize the calendar...
-			$("#actualSelect").change(function(){
-							console.log("Hello world I want to die1");
-				if ($('#actualSelect').val()!=""){
-							console.log($('#actualSelect').children(":selected").attr("id"));
-
-					var data = {select: $('#actualSelect').children(":selected").attr("id")};
-					$.ajax({
-					  type: "POST",
-					  dataType: "json",
-					  url: "include/getOH.php", //Relative or absolute path to response.php file
-					  data: data,
-					  success: function(results) {
-						  console.log(results);
-						$.each(results, function(k, v, d){
-							returndata.push([v.OHID, v.time,v.location]);
-							console.log(""+v.OHID+v.time+v.location)
-						});
-
-						
-						
-
-						//alert("Form submitted successfully.\nReturned json: " + data["json"]);
-					  }
-					});
-
-				}
-	
-				
-				return false;
-			});
-
-			$('#calendar').fullCalendar({
-					var events = [];
-				// put your options and callbacks here
-				    eventSources: [
-
-						// your event source
-						{
-							event.push(
-								for (var i = 0; i < returndata.length; i++)
-								{
-									title: "hello",
-									start: "2017-02-14"
-								}
-							)
-						}
-
-						// any other event sources...
-
-					],
-			
-			eventClick: function(event) {
-				if (event.url) {
-					window.open(event.url);
-					return false;
-				}
-			}
-			*/
-			
-			var plswork = getDates(1, "2017-11-1", "2018-2-1");
+			//var plswork = getDates(1, "2017-11-1", "2018-2-1");
 			function getDates(day, startingDate, endingDate){
 				var dates = [];
 				var daysInMonth = [];
@@ -245,6 +188,7 @@
 			<div>Classes</div>
 			<form id = "classSelect">
 				<select id = "actualSelect">
+					<option id = "nonID" select = "selected">Choose a Class</option>
 				<?php
 					echo $_SESSION['email'];
 					if (isset($_SESSION['email'])){
