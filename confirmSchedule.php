@@ -10,7 +10,7 @@
         $statement->execute();
         $result = $statement->fetch();
         $result +=1;
-        $statement = $conn->prepare("INSERT INTO appointment VALUES (NULL,DEFAULT,NULL,$result,'$_POST[categories]','$_POST[question]',$_SESSION[oh_ID], '$_SESSION[email]', $_GET('oh_date'))");
+        $statement = $conn->prepare("INSERT INTO appointment VALUES (NULL,DEFAULT,NULL,$result,'$_POST[categories]','$_POST[question]',$_SESSION[oh_ID], '$_SESSION[email]', '$_GET[oh_date]')");
         $statement->execute();
         header("Location: schedule.php");
     }    
