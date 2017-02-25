@@ -31,9 +31,9 @@
                     $IsTAorProfessor = true;
                 $statement = $conn->prepare("SELECT email, question, categories, queue
                                             FROM
-                                            (SELECT bookmarked.email, bookmarked.class_ID FROM staff 
-                                            INNER JOIN bookmarked
-                                            ON staff.class_ID = bookmarked.class_ID WHERE staff.email = '$_SESSION[email]') as a
+                                            (SELECT registered.email, registered.class_ID FROM staff 
+                                            INNER JOIN registered
+                                            ON staff.class_ID = registered.class_ID WHERE staff.email = '$_SESSION[email]') as a
                                             INNER JOIN
                                             (SELECT class_ID, question, categories, queue FROM office_hour 
                                             INNER JOIN appointment 

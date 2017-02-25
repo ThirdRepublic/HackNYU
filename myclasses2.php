@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <title></title>
@@ -118,7 +118,7 @@
 				<?php
 					echo $_SESSION['email'];
 					if (isset($_SESSION['email'])){
-					$cmd = "SELECT b.class_ID AS classID, b.isEnrolled as isEnrolled, c.name AS className FROM users u INNER JOIN bookmarked b ON u.email = b.email INNER JOIN classes c ON b.class_ID = c.class_ID WHERE u.email= '".$_SESSION['email']."'";
+					$cmd = "SELECT b.class_ID AS classID, b.isEnrolled as isEnrolled, c.name AS className FROM users u INNER JOIN registered b ON u.email = b.email INNER JOIN classes c ON b.class_ID = c.class_ID WHERE u.email= '".$_SESSION['email']."'";
 					$statement = $conn->prepare($cmd);
 					$statement->execute();
 					while($result = $statement->fetch()){
