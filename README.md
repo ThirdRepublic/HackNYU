@@ -4,7 +4,7 @@ This project began at HackNYU 2017 with an Educational Technology track in mind.
 
 ![alt tag](https://github.com/ThirdRepublic/HackNYU2017/blob/master/images/homePage.PNG)
 
-![alt tag](https://github.com/ThirdRepublic/HackNYU2017/blob/master/images/sampelSchedule.png)
+![alt tag](https://github.com/ThirdRepublic/HackNYU2017/blob/master/images/sampleSchedule.PNG)
 
 ##Currently Implemented
 
