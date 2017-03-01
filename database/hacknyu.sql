@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2017 at 08:56 AM
+-- Generation Time: Mar 01, 2017 at 07:18 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -58,7 +58,7 @@ INSERT INTO `appointment` (`app_ID`, `timestamp`, `duration`, `queue`, `categori
 CREATE TABLE `classes` (
   `class_ID` int(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `description` varchar(500) DEFAULT NULL,
+  `description` varchar(8000) DEFAULT NULL,
   `Start` date NOT NULL,
   `End` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -191,12 +191,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `app_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `app_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 --
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `class_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12346;
+  MODIFY `class_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=225856;
 --
 -- AUTO_INCREMENT for table `office_hour`
 --

@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php include "include/headerscript.php" ?>
-
+        <meta name="viewport" content="width=device-width">
         <title>Help/FAQ</title>
         <style>
             .container{

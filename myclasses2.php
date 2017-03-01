@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <title></title>
 		<?php include "include/headerscript.php" ?>
+        <meta name="viewport" content="width=device-width">
 		<link rel='stylesheet' href='api/fullcalendar/fullcalendar.css' />
 		<script src='api/fullcalendar/lib/jquery.min.js'></script>
 		<script src='api/fullcalendar/lib/moment.min.js'></script>

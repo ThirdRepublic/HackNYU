@@ -3,6 +3,7 @@
     <head>
         <title>TA Select Office Hour</title>
 		<?php include "include/headerscript.php" ?>
+        <meta name="viewport" content="width=device-width">
         <style>  
         </style>
 	</head>

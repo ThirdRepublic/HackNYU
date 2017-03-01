@@ -3,6 +3,7 @@
     <head>
         <title>Schedule</title>
 		<?php include "include/headerscript.php" ?>
+        <meta name="viewport" content="width=device-width">
         <style>
             #mainbody{
                 font-family: 'Open Sans', sans-serif;
