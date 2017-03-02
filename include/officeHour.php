@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Office Hour</title>
-		<?php include "include/headerscript.php" ?>
+		<?php include "headerscript.php" ?>
         <meta name="viewport" content="width=device-width">
         <style>
             #mainbody{
@@ -20,7 +20,7 @@
 	<body>
         <div id = "mainbody">
             <?php 
-                include "include/header.php";
+                include "header.php";
                 if(isset($_SESSION["text"])){   
                     echo "<div class = 'error'>".$_SESSION['text']."</div>";
                     $_SESSION["text"] = "";

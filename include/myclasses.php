@@ -1,4 +1,41 @@
-		<script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+		<?php include "headerscript.php" ?>
+        <meta name="viewport" content="width=device-width">
+		<link rel='stylesheet' href='../api/fullcalendar/fullcalendar.css' />
+		<script src='../api/fullcalendar/lib/jquery.min.js'></script>
+		<script src='../api/fullcalendar/lib/moment.min.js'></script>
+		<script src='../api/fullcalendar/fullcalendar.js'></script>
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<style>
+			#myclasses{
+				border-bottom: 1.5px solid #ff4949;
+			}
+			#calendar{
+				width: 80%;
+				margin-left: 10%;
+			}
+			.title{
+				
+				font-family: 'ABeeZee', sans-serif;
+				color:#ff4949;
+				font-size: 15pt;
+				padding: 5px;
+			}
+			form{
+				padding: 5px;
+			}
+		</style>
+		<?php
+		/*
+			if (!isset($_GET["mode"])||isset($_GET["mode"])==0)
+				include "include/calendar.php";
+			elseif(isset($_GET["mode"]==1)
+				include "include/dataAnalysis.php";*/
+		?>
+				<script>
 		// var returndata = [];
 		$(document).ready(
 		function() {
@@ -15,7 +52,7 @@
 				$.ajax({
 					type: "POST",
 					  dataType: "json",
-					  url: "include/getOH.php", //Relative or absolute path to response.php file
+					  url: "getOH.php", //Relative or absolute path to response.php file
 					  data: data,
 					  success: function(results) {
 						// console.log(results);
@@ -27,7 +64,7 @@
 							events.push({
 								title: v.location,
 								start: new Date(str + " " + v.time),
-								url: "schedule.php?oh_ID=" + v.OHID,
+								url: "scheduleAppointment.php?oh_ID=" + v.OHID + "&oh_date=" + str,
 								allDay: false
 							})
 							}
@@ -157,3 +194,87 @@
 			  return Math.round(difference_ms/one_day); 
 			}
 		</script>
+		<!--script>
+			$(document).ready(function() {
+				$("#dataAnalysisOption").append("<option id = 0>Number of People v. Weekday</option>");
+				$("#dataAnalysisOption").append("<option id = 1>Number of People v. Certain Office Hour</option>");
+				$("#dataAnalysisOption").append("<option id = 2>Number of People v. Office Hour</option>");
+				$("#dataAnalysisOption").append("<option id = 3>Average Response Time for TAs</option>");
+				$("#btn").append("Go");
+				$("#btn").click(function () {
+					
+					var svg = d3.select("svg");
+					console.log("hello");
+					console.log($('#dataAnalysisOption').children(":selected").attr("id"));
+					$.ajax({
+					type: "POST",
+					  dataType: "json",
+					  url: "include/getDataAnalysis.php", //Relative or absolute path to response.php file
+					  data: {mode: $('#dataAnalysisOption').children(":selected").attr("id"), 
+							 select: $('#actualSelect').children(":selected").attr("id")},
+					  success: function(results) {
+						  console.log(results);
+						  
+						d3.json(results, function(data){
+							console.log(data);
+							var dateScale = d3.scaleTime().domain([new Date(results.OHDate), new Date(results.OHDate)]).range([0,350]);
+							var dateAxis = d3.axisBottom(dateScale);
+							var freqScale = d3.scaleLinear().domain([0,10]).range([350,0]);
+							var freqAxis = d3.axisLeft(freqScale);
+							var sectorScale = d3.scaleOrdinal(d3.schemeCategory20);
+
+							var plot = svg.append("g").attr("transform", "translate(40,30)");
+							plot.append("g").call(dateAxis).attr("transform", "translate(0,350)");
+							plot.append("g").call(freqAxis).attr("transform", "translate(0,0)");
+
+							var pathGenerator = d3.line()
+							.x(function (d) { return dateScale(d.OHDate); })
+							.y(function (d) { return freqScale(d.Frequency); });
+						})
+						}
+    
+					});
+				})
+			});
+		</script-->
+	</head>
+	<body>
+	<?php include "header.php" ?>
+	<div id = "mainbody">
+		<div>
+			<div class = "title">Classes</div>
+			<form id = "classSelect">
+				<select id = "actualSelect">
+					<option id = "nonID" select = "selected">Choose a Class</option>
+				<?php
+					echo $_SESSION['email'];
+					if (isset($_SESSION['email'])){
+					$cmd = "SELECT b.class_ID AS classID, b.isEnrolled as isEnrolled, c.name AS className FROM users u INNER JOIN registered b ON u.email = b.email INNER JOIN classes c ON b.class_ID = c.class_ID WHERE u.email= '".$_SESSION['email']."'";
+					$statement = $conn->prepare($cmd);
+					$statement->execute();
+					while($result = $statement->fetch()){
+						echo "<option id = ".$result['classID']." class = ".$result['isEnrolled'].">";
+						echo $result["className"];
+						echo "</option>";
+					}
+					}
+					else
+					{
+						header("Location: ../index.php");
+					}
+
+				?>
+				</select>
+			</form>
+			<div id = "calendar"></div>
+			<!--form id = "modeselect">
+			<select id = "dataAnalysisOption"></select>
+			</form>
+			<div id = "btn"></div>
+			<svg>
+			</svg-->
+			
+		</div>
+	</div>
+    </body>
+</html>

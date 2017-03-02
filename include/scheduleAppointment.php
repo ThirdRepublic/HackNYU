@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Schedule</title>
-		<?php include "include/headerscript.php" ?>
+		<?php include "headerscript.php" ?>
         <meta name="viewport" content="width=device-width">
         <style>
             #mainbody{
@@ -24,7 +24,7 @@
         </div>
         <div id = "mainbody" class = "container well">
             <?php 
-                include "include/header.php";
+                include "header.php";
                 if(!isset($_SESSION["oh_ID"])){
                     $_SESSION["oh_ID"] = $_GET["oh_ID"];
                 }
@@ -33,10 +33,10 @@
                 }
                 if(isset($_SESSION["text"])){	
                     echo "<div>".$_SESSION['text']."</div>";
-                    $_SESSION["text"] = "";
+                    unset($_SESSION["text"]);
                 }
                 echo "<div class = 'title'>Register for an appointment.</div>
-                <form action='confirmSchedule.php' method='POST'>
+                <form action='confirmAppointment.php' method='POST'>
                     <input name = 'categories' value = 'review' type = 'radio' checked = 'checked'> Review <br>
                     <input name = 'categories' value = 'homework' type = 'radio'> Homework <br>
                     <input name = 'categories' value = 'other' type = 'radio'> Other <br>

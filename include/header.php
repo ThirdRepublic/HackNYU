@@ -35,7 +35,7 @@
                 $link = "StudentSelectClasses.php";
     ?>
 	<div id = "navbar" class = "navbar navbar-fixed-top">
-		<a href = "myclasses.php" ><div id = "logo"><?php include "logo/logo.php" ?></div> </a>
+		<a href = "myclasses.php" ><div id = "logo"><?php include "../logo/logo.php" ?></div> </a>
 		<div class = "navcontainer">
 			<a class = "navbar-a" href = "officehour.php">Office Hour</a>	<!--	add a drop tab there for prof and ta -->
 			<a class = "navbar-a" href = "<?php echo $link ?>">Add Office Hours</a>

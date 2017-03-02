@@ -6,25 +6,17 @@
     $email = $_POST["email"];
     $IsStudent = $_POST["IsStudent"];                
     $password = $_POST["password"];
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $_SESSION["text"] = "Not a vaild email.";
-		header("Location: index.php");
-    }
+    if($FName==null || $LName==null || $email==null || $password==null)	
+        $_SESSION["text"] = "You cannot leave any field blank.";
     else
-        if(!preg_match("/^[a-zA-Z]*$/",$FName) || !preg_match("/^[a-zA-Z]*$/",$LName)){
+        if(!preg_match("/^[a-zA-Z]*$/",$FName) || !preg_match("/^[a-zA-Z]*$/",$LName))
             $_SESSION["text"] = "Name can only contain letters.";
-            header("Location: index.php"); 
-        }
         else
-            if(!preg_match("/^[a-zA-Z0-9\~!@#$%^&*_]*$/",$password)){
-                $_SESSION["text"] = "Password may only contain A-Z, a-z, 0-9, ~, !, @, #, $, %, ^, &, *, _)";
-                header("Location: index.php");
-            }
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+                $_SESSION["text"] = "Not a vaild email.";
             else
-                if($FName==null || $LName==null || $email==null || $password==null){	
-                    $_SESSION["text"] = "You cannot leave any field blank.";
-                    header("Location: index.php");
-                }
+                if(!preg_match("/^[a-zA-Z0-9\~!@#$%^&*_]*$/",$password))
+                    $_SESSION["text"] = "Password may only contain A-Z, a-z, 0-9, ~, !, @, #, $, %, ^, &, *, _)";
                 else{
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                     $statement = $conn->prepare("SELECT email FROM users WHERE email = '$email'");
@@ -33,12 +25,9 @@
                         $statement = $conn->prepare("INSERT INTO users VALUES ('$email','$FName', '$LName','$IsStudent','$hashedPassword', 'NULL')");
                         $statement->execute();
                         $_SESSION["text"] = "Account created.";
-                        header("Location: index.php");
                     }
-                    else{
+                    else
                         $_SESSION["text"] = "Email is already used.";
-                        header("Location: index.php");
-                    }
                 }    
-                
+    header("Location: ../index.php?error=t");            
 ?>

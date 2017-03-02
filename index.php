@@ -87,7 +87,7 @@
             $error = "";
             if(isset($_SESSION["text"])){   
                 $error = "<div class = 'error'>".$_SESSION['text']."</div>";
-                $_SESSION["text"] = "";
+                unset($_SESSION["text"]);
             }
             if (!isset($_SESSION["email"])) {
                 echo "
@@ -100,7 +100,7 @@
 
                         <span class = 'descrip formlog'>Log in</span>
                         <br class = 'formlog'/><br class = 'formlog'/>
-                        <form class = 'formlog' action='logIn.php' method='POST'>
+                        <form class = 'formlog' action='include/logIn.php' method='POST'>
                             <input name='email' type='text' placeholder='Email'> <br>
                             <input name='password' type='password' placeholder='Password'> <br><br>
                             <input type='submit'>
@@ -108,7 +108,7 @@
                         
                         <span class = 'descrip formreg'>Register</span>
                         <br class = 'formreg'/><br class = 'formreg'/>
-                        <form class = 'formreg' action='register.php' method='POST'>
+                        <form class = 'formreg' action='include/register.php' method='POST'>
                             <input name = 'FName' placeholder = 'First Name' type = 'text' /> <br>
                             <input name = 'LName' placeholder = 'Last Name' type = 'text' /> <br>
                             <input name = 'email' placeholder = 'Email' type = 'text' /> <br>
@@ -120,15 +120,22 @@
                         ".$error."</div>";
             } 
             else {
-                header("Location: myclasses.php");
+                header("Location: include/myclasses.php");
             }
             ?>
         </div>
         <script>
             // getting the divs for login and register to see which is active
             $(document).ready(function() {
-                $(".formreg").hide();   // by default, want to log in
-
+                <?php
+                if(isset($_GET["error"])){   
+                    echo"$('.formlog').hide();
+                    $('.formreg').show();";
+                }
+                else
+                    echo "$('.formreg').hide();";// by default, want to log in
+                ?>
+                  
                 // when logging in, hide register form
                 $("#login").click(function() {
                     $(".formlog").show();

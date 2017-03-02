@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include "include/headerscript.php" ?>
+        <?php include "headerscript.php" ?>
     	<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width">
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link href="css/main.css" rel = "stylesheet">
+		<link href="../css/main.css" rel = "stylesheet">
         <link href="https://fonts.googleapis.com/css?family=ABeeZee|Open+Sans" rel="stylesheet">
         <title>Help/FAQ</title>
 		<script>
@@ -116,7 +116,7 @@
 			?>
     </head>
     <body>
-        <?php include "include/header.php" ?>
+        <?php include "header.php" ?>
         <div class="container panel panel-default">
             <div class = "panel panel-body">1) What is this?</div>
             <div class = "panel panel-footer">
