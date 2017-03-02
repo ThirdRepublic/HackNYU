@@ -20,7 +20,7 @@
         $statement = $conn->prepare("INSERT INTO appointment VALUES (NULL,DEFAULT,NULL,$result,'$_POST[categories]', $question, $_SESSION[oh_ID],'$_SESSION[email]', '$_SESSION[oh_date]')");
         $statement->execute();
         $statement->fetch();
-        $_SESSION["text"] = "Appointment Successfuly Created."
-        header("Location: scheduleAppointment.php");
+        $_SESSION["text"] = "Appointment Successfuly Created.";
+        header("Location: myclasses.php");
     }    
 ?>
