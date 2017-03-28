@@ -25,3 +25,5 @@ This project began at HackNYU 2017 with an Educational Technology track in mind.
 
 SQL/Database files are removed due to sensitivity of data.
 Project is still under development. 
+
+[Project Featured](http://technical.ly/brooklyn/2017/02/22/see-9-projects-nyus-global-hackathon/)
